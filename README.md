@@ -26,6 +26,9 @@ For Docker installation:
 
 ## Installation
 
+> [!NOTE]
+> If you plan to use the Docker installation method, you'll need to build the Docker container first. See the [Building Docker Container](#building-docker-container) section below for instructions.
+
 ### Cursor
 
 #### Using NPX
@@ -219,6 +222,14 @@ After installing Claude Code, run the following command:
 
 ```bash
 claude mcp add circleci-mcp-server -e CIRCLECI_TOKEN=your-circleci-token -- npx -y @circleci/mcp-server-circleci
+```
+
+#### Using Docker
+
+After installing Claude Code, run the following command:
+
+```bash
+claude mcp add circleci-mcp-server -e CIRCLECI_TOKEN=your-circleci-token -e CIRCLECI_BASE_URL=https://circleci.com -- docker run --rm -i -e CIRCLECI_TOKEN -e CIRCLECI_BASE_URL circleci:mcp
 ```
 
 See the guide below for more information on using MCP servers with Claude Code:
