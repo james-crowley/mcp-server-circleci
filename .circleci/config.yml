@@ -142,9 +142,9 @@ workflows:
             - test
       - publish-docker-image:
           context: docker-hub-creds
-          # filters:
-          #   branches:
-          #     only: main
+          filters:
+            branches:
+              only: main
           requires:
             - build
             - lint
