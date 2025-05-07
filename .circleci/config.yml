@@ -111,15 +111,14 @@ jobs:
           command: |
             docker buildx create --name multiarch --use
             docker buildx inspect --bootstrap
-      - docker/check:
-          registry: $DOCKER_REGISTRY
+      - docker/check
       - run:
           name: Build and push multi-architecture Docker image
           command: |
             docker buildx build --platform linux/amd64,linux/arm64 \
-              -t circleci/mcp-server:latest \
-              -t circleci/mcp-server:$PACKAGE_VERSION \
-              -t circleci/mcp-server:$CIRCLE_SHA1 \
+              -t ${DOCKER_NAMESPACE}/mcp-server:latest \
+              -t ${DOCKER_NAMESPACE}/mcp-server:${PACKAGE_VERSION} \
+              -t ${DOCKER_NAMESPACE}/mcp-server:${CIRCLE_SHA1} \
               --push .
 
 workflows:
@@ -143,9 +142,9 @@ workflows:
             - test
       - publish-docker-image:
           context: docker-hub-creds
-          filters:
-            branches:
-              only: main
+          # filters:
+          #   branches:
+          #     only: main
           requires:
             - build
             - lint
