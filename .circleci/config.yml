@@ -141,7 +141,7 @@ workflows:
             - lint
             - test
       - publish-docker-image:
-          context: docker-hub-creds
+          context: mcp-server-docker-publish
           filters:
             branches:
               only: main
