@@ -26,9 +26,6 @@ For Docker installation:
 
 ## Installation
 
-> [!NOTE]
-> If you plan to use the Docker installation method, you'll need to build the Docker container first. See the [Building Docker Container](#building-docker-container) section below for instructions.
-
 ### Cursor
 
 #### Using NPX
@@ -65,7 +62,7 @@ Add the following to your cursor MCP config:
         "-i",
         "-e", "CIRCLECI_TOKEN",
         "-e", "CIRCLECI_BASE_URL",
-        "circleci:mcp-server"
+        "circleci:mcp-server-circleci"
       ],
       "env": {
         "CIRCLECI_TOKEN": "your-circleci-token",
@@ -146,7 +143,7 @@ To install CircleCI MCP Server for VS Code in `.vscode/mcp.json` using Docker:
         "-i",
         "-e", "CIRCLECI_TOKEN",
         "-e", "CIRCLECI_BASE_URL",
-        "circleci:mcp-server"
+        "circleci:mcp-server-circleci"
       ],
       "env": {
         "CIRCLECI_TOKEN": "${input:circleci-token}",
@@ -193,7 +190,7 @@ Add the following to your claude_desktop_config.json:
         "-i",
         "-e", "CIRCLECI_TOKEN",
         "-e", "CIRCLECI_BASE_URL",
-        "circleci:mcp-server"
+        "circleci:mcp-server-circleci"
       ],
       "env": {
         "CIRCLECI_TOKEN": "your-circleci-token",
@@ -229,7 +226,7 @@ claude mcp add circleci-mcp-server -e CIRCLECI_TOKEN=your-circleci-token -- npx 
 After installing Claude Code, run the following command:
 
 ```bash
-claude mcp add circleci-mcp-server -e CIRCLECI_TOKEN=your-circleci-token -e CIRCLECI_BASE_URL=https://circleci.com -- docker run --rm -i -e CIRCLECI_TOKEN -e CIRCLECI_BASE_URL circleci:mcp-server
+claude mcp add circleci-mcp-server -e CIRCLECI_TOKEN=your-circleci-token -e CIRCLECI_BASE_URL=https://circleci.com -- docker run --rm -i -e CIRCLECI_TOKEN -e CIRCLECI_BASE_URL circleci:mcp-server-circleci
 ```
 
 See the guide below for more information on using MCP servers with Claude Code:
@@ -271,7 +268,7 @@ Add the following to your windsurf mcp_config.json:
         "-i",
         "-e", "CIRCLECI_TOKEN",
         "-e", "CIRCLECI_BASE_URL",
-        "circleci:mcp-server"
+        "circleci:mcp-server-circleci"
       ],
       "env": {
         "CIRCLECI_TOKEN": "your-circleci-token",
@@ -579,15 +576,15 @@ npx -y @smithery/cli install @CircleCI-Public/mcp-server-circleci --client claud
 You can build the Docker container locally using:
 
 ```bash
-docker build -t circleci:mcp-server .
+docker build -t circleci:mcp-server-circleci .
 ```
 
-This will create a Docker image tagged as `circleci:mcp-server` that you can use with any MCP client.
+This will create a Docker image tagged as `circleci:mcp-server-circleci` that you can use with any MCP client.
 
 To run the container:
 
 ```bash
-docker run --rm -i -e CIRCLECI_TOKEN=your-circleci-token -e CIRCLECI_BASE_URL=https://circleci.com circleci:mcp-server
+docker run --rm -i -e CIRCLECI_TOKEN=your-circleci-token -e CIRCLECI_BASE_URL=https://circleci.com circleci:mcp-server-circleci
 ```
 
 ## Development with MCP Inspector

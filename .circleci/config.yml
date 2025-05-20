@@ -116,9 +116,9 @@ jobs:
           name: Build and push multi-architecture Docker image
           command: |
             docker buildx build --platform linux/amd64,linux/arm64 \
-              -t ${DOCKER_NAMESPACE}/mcp-server:latest \
-              -t ${DOCKER_NAMESPACE}/mcp-server:${PACKAGE_VERSION} \
-              -t ${DOCKER_NAMESPACE}/mcp-server:${CIRCLE_SHA1} \
+              -t ${DOCKER_NAMESPACE}/mcp-server-circleci:latest \
+              -t ${DOCKER_NAMESPACE}/mcp-server-circleci:${PACKAGE_VERSION} \
+              -t ${DOCKER_NAMESPACE}/mcp-server-circleci:${CIRCLE_SHA1} \
               --push .
 
 workflows:
